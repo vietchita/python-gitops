@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-random-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-random-app
+  template:
+    metadata:
+      labels:
+        app: flask-random-app
+    spec:
+      containers:
+      - name: flask-random-app
+        image: vietchita/flask-random-app:latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: MIN
+          valueFrom:
+            configMapKeyRef:
+              name: py-configmap
+              key: MIN
+        - name: MAX
+          valueFrom:
+            configMapKeyRef:
+              name: py-configmap
+              key: MAX
