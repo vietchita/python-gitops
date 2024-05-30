@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: flask-random-app
-        image: vietchita/flask-random-app:6
+        image: vietchita/flask-random-app:7
         ports:
         - containerPort: 5000
         env:
